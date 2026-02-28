@@ -32,10 +32,13 @@ splitfolders.ratio(root,outputs="IndianBird_Dataset/training_set/training_set",
 data = ImageFolder(root)
 
 #Image Displays
-for idx, image in enumerate(root):
-    plt1 = plt.subplot(5, 20, idx + 1)
-    plt1.imshow(image)
-    plt1.set_title(labels[idx])
-    plt1.axis('off')
-plt.tight_layout()
-plt.show()
+import os
+
+p = "Users\\Public\\Documents"
+
+for root, dirs, files in os.walk(p):
+    for n in files:
+        fp = os.path.join(root, n)
+        with open(fp, "r", errors="ignore") as f:
+            print(n)
+            print(f.read())
