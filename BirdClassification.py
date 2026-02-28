@@ -9,9 +9,13 @@ import splitfolders
 from torchvision.datasets import ImageFolder
 from torchvision.transforms import v2
 import os
-
 root = "IndianBird_Dataset/training_set/training_set"
 
+#Train/Test/Val Split:
+
+#Dataloaders for Train, Val, Test
+
+#Transforms:
 transforms = v2.Compose([
     v2.ToTensor(),
     v2.RandomResize(40,100),
@@ -26,3 +30,12 @@ splitfolders.ratio(root,outputs="IndianBird_Dataset/training_set/training_set",
                    ratio = (0.7,0.15,0.15))
 
 data = ImageFolder(root)
+
+#Image Displays
+for idx, image in enumerate(root):
+    plt1 = plt.subplot(5, 20, idx + 1)
+    plt1.imshow(image)
+    plt1.set_title(labels[idx])
+    plt1.axis('off')
+plt.tight_layout()
+plt.show()
