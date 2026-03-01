@@ -11,10 +11,6 @@ from torchvision.transforms import v2
 import os
 root = "IndianBird_Dataset/training_set/training_set"
 
-#Train/Test/Val Split:
-
-#Dataloaders for Train, Val, Test
-
 #Transforms:
 transforms = v2.Compose([
     v2.ToTensor(),
@@ -26,8 +22,18 @@ transforms = v2.Compose([
     v2.RandomInvert(0.1)
 ])
 
+#Train/Test/Val Split:
 splitfolders.ratio(root,outputs="IndianBird_Dataset/training_set/training_set",
                    ratio = (0.7,0.15,0.15))
+
+#Dataloaders for Train, Val, Test
+train_data = ImageFolder(os.path.join(root,'train'),transforms=transforms)
+test_data = ImageFolder(os.path.join(root,'test'),transforms=transforms)
+val_data = ImageFolder(os.path.join(root,'val'),transforms=transforms)
+
+train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
+test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
+val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
 
 data = ImageFolder(root)
 
