@@ -39,12 +39,30 @@ data = ImageFolder(root)
 
 #Image Displays
 import os
+from PIL import Image
+import random
 
-p = "Users\\Public\\Documents"
+base_dir = os.path.dirname(__file__)
+p = os.path.abspath(os.path.join(base_dir, "..", "training_set"))
 
-for root, dirs, files in os.walk(p):
-    for n in files:
-        fp = os.path.join(root, n)
-        with open(fp, "r", errors="ignore") as f:
-            print(n)
-            print(f.read())
+valid_ext = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
+image_paths = []
+for root, _, files in os.walk(p):
+    for filename in files:
+        ext = os.path.splitext(filename)[1].lower()
+        if ext in valid_ext:
+            image_paths.append(os.path.join(root, filename))
+
+num_to_show = min(100, len(image_paths))
+random_images = random.sample(image_paths, k=num_to_show)
+
+plt.figure(figsize=(20, 5))
+for idx, fp in enumerate(random_images, start=1):
+    img = Image.open(fp)
+    plt1 = plt.subplot(5, 20, idx)
+    plt1.imshow(img)
+    plt1.set_title(os.path.basename(os.path.dirname(fp)))
+    plt1.axis('off')
+
+plt.tight_layout()
+plt.show()
