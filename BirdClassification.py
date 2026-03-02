@@ -9,31 +9,37 @@ import splitfolders
 from torchvision.datasets import ImageFolder
 from torchvision.transforms import v2
 import os
-root = "IndianBird_Dataset/training_set/training_set"
+root = "training_set"
 
 #Transforms:
 transforms = v2.Compose([
     v2.ToTensor(),
     v2.RandomResize(40,100),
-    v2.RandomHorizontalFlip([0.5]),
-    v2.RandomVerticalFlip([0.5]),
-    v2.RandomPerspective([0.5]),
+    v2.RandomHorizontalFlip(0.5),
+    v2.RandomVerticalFlip(0.5),
+    v2.RandomPerspective(0.5),
     v2.RandomChannelPermutation(),
     v2.RandomInvert(0.1)
 ])
 
+# Take Indian Dataset and extract training_set with the data
+# Make a new file called "__pycache__"
+
 #Train/Test/Val Split:
-splitfolders.ratio(root,outputs="IndianBird_Dataset/training_set/training_set",
+splitfolders.ratio(root,output= "__pycache__",
                    ratio = (0.7,0.15,0.15))
 
+root = "__pycache__"
+
 #Dataloaders for Train, Val, Test
-train_data = ImageFolder(os.path.join(root,'train'),transforms=transforms)
-test_data = ImageFolder(os.path.join(root,'test'),transforms=transforms)
-val_data = ImageFolder(os.path.join(root,'val'),transforms=transforms)
+train_data = ImageFolder(os.path.join(root,'train'),transform=transforms)
+test_data = ImageFolder(os.path.join(root,'test'),transform=transforms)
+val_data = ImageFolder(os.path.join(root,'val'),transform=transforms)
 
 train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
 test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
 val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
+
 
 data = ImageFolder(root)
 
@@ -66,3 +72,5 @@ for idx, fp in enumerate(random_images, start=1):
 
 plt.tight_layout()
 plt.show()
+
+# We were able to get matplotlib to show up, but the pictures will not show up.
