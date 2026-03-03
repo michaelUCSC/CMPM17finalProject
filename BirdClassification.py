@@ -49,7 +49,7 @@ from PIL import Image
 import random
 
 base_dir = os.path.dirname(__file__)
-p = os.path.abspath(os.path.join(base_dir, "..", "training_set"))
+p = os.path.abspath(os.path.join(base_dir, "training_set"))
 
 valid_ext = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 image_paths = []
@@ -62,15 +62,15 @@ for root, _, files in os.walk(p):
 num_to_show = min(100, len(image_paths))
 random_images = random.sample(image_paths, k=num_to_show)
 
+print(random_images)
+
 plt.figure(figsize=(20, 5))
 for idx, fp in enumerate(random_images, start=1):
     img = Image.open(fp)
-    plt1 = plt.subplot(5, 20, idx)
+    plt1 = plt.subplot(5,20, idx)
     plt1.imshow(img)
     plt1.set_title(os.path.basename(os.path.dirname(fp)))
     plt1.axis('off')
 
 plt.tight_layout()
 plt.show()
-
-# We were able to get matplotlib to show up, but the pictures will not show up.
