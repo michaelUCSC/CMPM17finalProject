@@ -9,42 +9,40 @@ import splitfolders
 from torchvision.datasets import ImageFolder
 from torchvision.transforms import v2
 import os
-root = "IndianBird_Dataset/training_set/training_set"
+root = "Data"
 
-# #Transforms:
-# transforms = v2.Compose([
-#     v2.ToTensor(),
-#     v2.RandomResize(40,100),
-#     v2.RandomHorizontalFlip([0.5]),
-#     v2.RandomVerticalFlip([0.5]),
-#     v2.RandomPerspective([0.5]),
-#     v2.RandomChannelPermutation(),
-#     v2.RandomInvert(0.1)
-# ])
+#Transforms:
+transforms = v2.Compose([
+    v2.ToTensor(),
+    v2.RandomResize(40,100),
+    v2.RandomHorizontalFlip(0.5),
+    v2.RandomVerticalFlip(0.5),
+    v2.RandomPerspective(0.5),
+    v2.RandomChannelPermutation(),
+    v2.RandomInvert(0.1)
+])
 
-# #Train/Test/Val Split:
-# splitfolders.ratio(root,outputs="IndianBird_Dataset/training_set/training_set",
-#                    ratio = (0.7,0.15,0.15))
+# Take Indian Dataset and extract training_set with the data
 
-# #Dataloaders for Train, Val, Test
-# train_data = ImageFolder(os.path.join(root,'train'),transforms=transforms)
-# test_data = ImageFolder(os.path.join(root,'test'),transforms=transforms)
-# val_data = ImageFolder(os.path.join(root,'val'),transforms=transforms)
+#Dataloaders for Train, Val, Test
+train_data = ImageFolder(os.path.join(root,'train'),transform=transforms)
+test_data = ImageFolder(os.path.join(root,'test'),transform=transforms)
+val_data = ImageFolder(os.path.join(root,'val'),transform=transforms)
 
-# train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
-# test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
-# val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
+train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
+test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
+val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
 
 
-# data = ImageFolder(root)
+data = ImageFolder(root)
 
 #Image Displays
 import os
 from PIL import Image
 import random
 
-base_dir = os.path.dirname(__file__)
-p = os.path.abspath(os.path.join(base_dir, "..", "training_set"))
+base_dir = os.path.dirname("CMPM17finalProjectREPO")
+p = os.path.abspath(os.path.join(base_dir, "Data"))
 
 valid_ext = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 image_paths = []
@@ -57,10 +55,12 @@ for root, _, files in os.walk(p):
 num_to_show = min(100, len(image_paths))
 random_images = random.sample(image_paths, k=num_to_show)
 
+print(random_images)
+
 plt.figure(figsize=(20, 5))
 for idx, fp in enumerate(random_images, start=1):
     img = Image.open(fp)
-    plt1 = plt.subplot(5, 20, idx)
+    plt1 = plt.subplot(5,20, idx)
     plt1.imshow(img)
     plt1.set_title(os.path.basename(os.path.dirname(fp)))
     plt1.axis('off')
