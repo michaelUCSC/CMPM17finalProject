@@ -24,28 +24,30 @@ transforms = v2.Compose([
 
 # Take Indian Dataset and extract training_set with the data
 
-#Dataloaders for Train, Val, Test
-train_data = ImageFolder(os.path.join(root,'train'),transform=transforms)
-test_data = ImageFolder(os.path.join(root,'test'),transform=transforms)
-val_data = ImageFolder(os.path.join(root,'val'),transform=transforms)
-
-train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
-test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
-val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
-
-data = ImageFolder(root)
-
-#Image Displays
 import os
 from PIL import Image
 import random
 
 base_dir = os.path.dirname(__file__)
-p = os.path.abspath(os.path.join(base_dir, "Data"))
+upper_dir = os.path.dirname(base_dir)
+data_path = os.path.abspath(os.path.join(upper_dir, "Data"))
+
+#Dataloaders for Train, Val, Test
+train_data = ImageFolder(data_path, transform=transforms)
+test_data = ImageFolder(data_path,transform=transforms)
+val_data = ImageFolder(data_path,transform=transforms)
+
+train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
+test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
+val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
+
+data = ImageFolder(data_path)
+
+#Image Displays
 
 valid_ext = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 image_paths = []
-for root, _, files in os.walk(p):
+for root, _, files in os.walk(data_path):
     for filename in files:
         ext = os.path.splitext(filename)[1].lower()
         if ext in valid_ext:
