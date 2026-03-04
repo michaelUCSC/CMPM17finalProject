@@ -14,7 +14,7 @@ root = "training_set"
 #Transforms:
 transforms = v2.Compose([
     v2.ToTensor(),
-    v2.RandomResize(40,100),
+    v2.Resize(96,96),
     v2.RandomHorizontalFlip(0.5),
     v2.RandomVerticalFlip(0.5),
     v2.RandomPerspective(0.5),
@@ -23,7 +23,7 @@ transforms = v2.Compose([
 ])
 
 # Take Indian Dataset and extract training_set with the data
-# Make a new file called "__pycache__"
+# Make a new folder called "__pycache__"
 
 #Train/Test/Val Split:
 splitfolders.ratio(root,output= "__pycache__",
@@ -74,3 +74,26 @@ for idx, fp in enumerate(random_images, start=1):
 
 plt.tight_layout()
 plt.show()
+
+# Convolution Layers
+
+class ConvNet(nn.Module):
+    def __init__(self):
+        self.conv1 = nn.Conv2d(3,6,3,1,1)
+        self.conv2 = nn.Conv2d(6,16,3,1,1)
+        self.conv3 = nn.Conv2d(16,48,3,1,1)
+        self.pool = nn.MaxPool2d(2,2)
+        self.fc1 = nn.Linear(12*12*48,50)
+        self.fc2 = nn.Linear(400,5)
+        self.relu = nn.ReLU()
+    def forward(self,x):
+        x = self.relu(self.conv1(x))
+        x = self.pool(x)
+        x = self.relu(self.conv2(x))
+        x = self.pool(x)
+        x = self.relu(self.conv3(x))
+        x = self.pool(x)
+        x = x.flatten(start_dim=1)
+        x = self.relu(self.fc1(x))
+        output = self.fc2(x)
+        return output
