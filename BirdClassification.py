@@ -106,8 +106,22 @@ model.train()
 
 # Maybeee include test just in case?? I don't know if it's required but should write just in case maybe.
 
+loss_function = nn.BCEWithLogitsLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.01)
+
 NUM_EPOCHS = 50
 
+
 for epochs in range (NUM_EPOCHS):
+    print("------------Training------------")
     for x_batch, y_batch in train_loader:
         #Placeholder
+    
+    print("------------Validation------------")
+    for x_batch, y_batch in val_loader:
+        #Placeholder
+
+print("------------Testing------------")
+model.eval()
+with torch.no_grad():
+    #Placeholder
