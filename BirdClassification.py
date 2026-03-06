@@ -124,4 +124,5 @@ for epochs in range (NUM_EPOCHS):
 print("------------Testing------------")
 model.eval()
 with torch.no_grad():
+    for x_batch, y_batch in test_loader:
     #Placeholder
