@@ -71,6 +71,8 @@ plt.show()
 
 # Convolution Layers
 
+#Change channels in conv if model is really bad.
+
 class ConvNet(nn.Module):
     def __init__(self):
         self.conv1 = nn.Conv2d(3,6,3,1,1)
@@ -91,3 +93,21 @@ class ConvNet(nn.Module):
         x = self.relu(self.fc1(x))
         output = self.fc2(x)
         return output
+
+
+model = ConvNet()
+model.train()
+
+# Training Loop
+
+# Try 50 epochs
+# Testing loss doesn't matter at the moment, but try to keep losses on the low side so it's easier to fix later on.
+# For each epoch, include validation.
+
+# Maybeee include test just in case?? I don't know if it's required but should write just in case maybe.
+
+NUM_EPOCHS = 50
+
+for epochs in range (NUM_EPOCHS):
+    for x_batch, y_batch in train_loader:
+        #Placeholder
