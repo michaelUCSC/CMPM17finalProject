@@ -18,8 +18,16 @@ transforms = v2.Compose([
     v2.RandomHorizontalFlip(0.5),
     v2.RandomVerticalFlip(0.5),
     v2.RandomPerspective(0.5),
-    v2.RandomChannelPermutation(),
+    v2.ColorJitter(brightness=0.5, contrast=0.3, saturation=0.5, hue=0.1),
     v2.RandomInvert(0.1)
+])
+
+test_transforms = v2.Compose([
+    v2.ToTensor()
+])
+
+val_transforms = v2.Compose([
+    v2.ToTensor()
 ])
 
 # Take Indian Dataset and extract training_set with the data
@@ -34,14 +42,12 @@ data_path = os.path.abspath(os.path.join(upper_dir, "Data"))
 
 #Dataloaders for Train, Val, Test
 train_data = ImageFolder(data_path, transform=transforms)
-test_data = ImageFolder(data_path,transform=transforms)
-val_data = ImageFolder(data_path,transform=transforms)
+test_data = ImageFolder(data_path,transform=test_transforms)
+val_data = ImageFolder(data_path,transform=val_transforms)
 
-train_loader = DataLoader(train_data,batch_size=30,shuffle=True)
-test_loader = DataLoader(test_data,batch_size=15,shuffle=False)
-val_loader = DataLoader(val_data,batch_size=15,shuffle=False)
-
-data = ImageFolder(data_path)
+train_loader = DataLoader(train_data,batch_size=70,shuffle=True)
+test_loader = DataLoader(test_data,batch_size=32,shuffle=False)
+val_loader = DataLoader(val_data,batch_size=32,shuffle=False)
 
 #Image Displays
 
