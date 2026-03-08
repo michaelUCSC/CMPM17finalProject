@@ -13,9 +13,10 @@ root = "Data"
 
 #Transforms:
 transforms = v2.Compose([
-    v2.ToTensor(),
+    
     v2.Resize(96,96),
     v2.RandomHorizontalFlip(0.5),
+    v2.ToTensor(),
     v2.RandomVerticalFlip(0.5),
     v2.RandomPerspective(0.5),
     v2.ColorJitter(brightness=0.5, contrast=0.3, saturation=0.5, hue=0.1),
@@ -81,6 +82,7 @@ plt.show()
 
 class ConvNet(nn.Module):
     def __init__(self):
+        super().__init__()
         self.conv1 = nn.Conv2d(3,6,3,1,1)
         self.conv2 = nn.Conv2d(6,16,3,1,1)
         self.conv3 = nn.Conv2d(16,48,3,1,1)
@@ -121,14 +123,26 @@ NUM_EPOCHS = 50
 for epochs in range (NUM_EPOCHS):
     print("------------Training------------")
     for x_batch, y_batch in train_loader:
-        #Placeholder
+        train_pred = model(x_batch)
+        loss = loss_function(train_pred, y_batch)
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+        
+        print(loss.item())
     
     print("------------Validation------------")
     for x_batch, y_batch in val_loader:
-        #Placeholder
+        val_pred = model(x_batch)
+        loss = loss_function(val_pred, y_batch)
+
+        print(loss.item())
 
 print("------------Testing------------")
 model.eval()
 with torch.no_grad():
     for x_batch, y_batch in test_loader:
-    #Placeholder
+        test_pred = model(x_batch)
+        loss = loss_function(test_pred, y_batch)
+        
+        print(loss.item())
