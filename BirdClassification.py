@@ -15,7 +15,7 @@ root = "Data"
 transforms = v2.Compose([
     
     v2.ToTensor(), 
-    v2.Resize(96),
+    v2.Resize((96,96)),
     v2.RandomVerticalFlip(0.5),
     v2.RandomPerspective(0.5),
     v2.ColorJitter(brightness=0.5, contrast=0.3, saturation=0.5, hue=0.1),
@@ -87,7 +87,7 @@ class ConvNet(nn.Module):
         self.conv3 = nn.Conv2d(16,48,3,1,1)
         self.pool = nn.MaxPool2d(2,2)
         self.fc1 = nn.Linear(12*12*48,50)
-        self.fc2 = nn.Linear(400,5)
+        self.fc2 = nn.Linear(50,25)
         self.relu = nn.ReLU()
     def forward(self,x):
         x = self.relu(self.conv1(x))
@@ -113,7 +113,7 @@ model.train()
 
 # Maybeee include test just in case?? I don't know if it's required but should write just in case maybe.
 
-loss_function = nn.BCEWithLogitsLoss()
+loss_function = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 
 NUM_EPOCHS = 50
