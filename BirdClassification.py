@@ -14,9 +14,8 @@ root = "Data"
 #Transforms:
 transforms = v2.Compose([
     
-    v2.Resize(96,96),
-    v2.RandomHorizontalFlip(0.5),
-    v2.ToTensor(),
+    v2.ToTensor(), 
+    v2.Resize(96),
     v2.RandomVerticalFlip(0.5),
     v2.RandomPerspective(0.5),
     v2.ColorJitter(brightness=0.5, contrast=0.3, saturation=0.5, hue=0.1),
