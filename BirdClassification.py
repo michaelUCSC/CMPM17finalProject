@@ -23,11 +23,13 @@ transforms = v2.Compose([
 ])
 
 test_transforms = v2.Compose([
-    v2.ToTensor()
+    v2.ToTensor(),
+    v2.Resize((96,96))
 ])
 
 val_transforms = v2.Compose([
-    v2.ToTensor()
+    v2.ToTensor(),
+    v2.Resize((96,96))
 ])
 
 # Take Indian Dataset and extract training_set with the data
