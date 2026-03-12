@@ -1,0 +1,144 @@
+C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_deprecated.py:42: UserWarning: The transform `ToTensor()` is deprecated and will be removed in a future release. Instead, please use `v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])`.Output is equivalent up to float precision.
+  warnings.warn(
+------------Training------------
+Please wait (should take a minute or two)...
+3.274785280227661
+1.4780120849609375
+2.556422710418701
+1.005187749862671
+1.0946769714355469
+0.7822372317314148
+0.9153720140457153
+0.9115116000175476
+0.8256208300590515
+0.9418078660964966
+1.0125771760940552
+0.9273121356964111
+1.0328679084777832
+0.9629199504852295
+0.796400249004364
+0.7821438312530518
+0.7976369857788086
+0.9425283074378967
+0.8847975730895996
+0.7333679795265198
+0.8519773483276367
+0.934856116771698
+0.7869145274162292
+0.8929892182350159
+0.9015018343925476
+0.8538289666175842
+0.7389211654663086
+0.5792102217674255
+1.017293095588684
+0.9521802663803101
+0.9349790215492249
+0.7512922286987305
+0.8003994822502136
+0.8459203243255615
+0.897661566734314
+0.8111438751220703
+0.9683049917221069
+0.952070415019989
+0.8429417014122009
+0.8732488751411438
+0.7248005867004395
+0.7259587645530701
+0.8252068161964417
+0.7217615842819214
+0.8137474656105042
+0.699451744556427
+0.7552750110626221
+0.7488840222358704
+0.7513665556907654
+0.8421521782875061
+0.9244951605796814
+0.7718524932861328
+0.6793611645698547
+0.8409062027931213
+0.9399660229682922
+0.9081017971038818
+0.928238570690155
+0.928013801574707
+0.6667717695236206
+0.8767609596252441
+0.880340576171875
+0.8817515969276428
+0.7560647130012512
+0.7629109621047974
+0.7458634972572327
+0.8426333069801331
+0.986469030380249
+0.8669067621231079
+0.8364582657814026
+0.9695883393287659
+0.9473909735679626
+0.9011664986610413
+0.8520378470420837
+0.8805420994758606
+0.7933334708213806
+0.7205259203910828
+0.7901250720024109
+0.9048057794570923
+0.9788452982902527
+0.7976695895195007
+0.7790459394454956
+0.9763036370277405
+0.8014928698539734
+1.0624500513076782
+0.8936469554901123
+0.8821759223937988
+0.8861004710197449
+0.7841529846191406
+0.827703058719635
+0.8158863186836243
+0.8323933482170105
+1.1063809394836426
+0.6980337500572205
+0.8603310585021973
+0.7962840795516968
+0.7144843339920044
+0.804790735244751
+0.9830371141433716
+0.8330813050270081
+0.848495364189148
+0.8239221572875977
+0.7736085653305054
+0.8035910129547119
+0.8904457688331604
+0.8309919834136963
+0.7971348166465759
+0.8495940566062927
+0.8216850757598877
+0.7988122701644897
+0.7767035961151123
+0.9070563912391663
+0.8197349905967712
+Traceback (most recent call last):
+  File "C:\Users\emily\Videos\homework\CMPM17_Code\final\cmpm17finalproject\birdclassification.py", line 134, in <module>
+    for x_batch, y_batch in train_loader:
+                            ^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\utils\data\dataloader.py", line 741, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\utils\data\dataloader.py", line 801, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\datasets\folder.py", line 245, in __getitem__
+    sample = self.loader(path)
+             ^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\datasets\folder.py", line 284, in default_loader
+    return pil_loader(path)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\datasets\folder.py", line 264, in pil_loader
+    return img.convert("RGB")
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\PIL\Image.py", line 967, in convert
+    self.load()
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\PIL\ImageFile.py", line 406, in load
+    n, err_code = decoder.decode(b)
+                  ^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

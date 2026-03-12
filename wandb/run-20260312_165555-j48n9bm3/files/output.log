@@ -1,0 +1,84 @@
+C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_deprecated.py:42: UserWarning: The transform `ToTensor()` is deprecated and will be removed in a future release. Instead, please use `v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])`.Output is equivalent up to float precision.
+  warnings.warn(
+------------Training------------
+Please wait (should take a minute or two)...
+3.1664459705352783
+1.4955188035964966
+2.0131471157073975
+1.368796944618225
+0.9809015393257141
+0.9556312561035156
+0.7708989977836609
+0.7980229258537292
+0.8525739908218384
+0.8335911631584167
+0.8193283081054688
+0.8396397233009338
+0.954867422580719
+0.7460998892784119
+0.9030823707580566
+1.055914282798767
+0.7302604913711548
+0.9219447374343872
+0.8529932498931885
+1.102973461151123
+0.9096154570579529
+0.804979681968689
+0.8376143574714661
+0.7722607254981995
+0.94993656873703
+0.9802185297012329
+0.943699300289154
+0.7387201189994812
+0.8154003024101257
+0.9009619951248169
+0.8879741430282593
+0.6188724040985107
+0.9684900641441345
+0.9155397415161133
+0.77179354429245
+0.9129742980003357
+0.8115518689155579
+0.9506368637084961
+0.7843540906906128
+0.7647460103034973
+0.8465737104415894
+1.0141041278839111
+0.7698099613189697
+0.8498053550720215
+0.7287092208862305
+0.8618083596229553
+0.7128246426582336
+0.8893417716026306
+0.8634074330329895
+0.8622456192970276
+0.8399496078491211
+0.9176334738731384
+0.743925929069519
+0.7954381704330444
+Traceback (most recent call last):
+  File "C:\Users\emily\Videos\homework\CMPM17_Code\final\cmpm17finalproject\birdclassification.py", line 137, in <module>
+    train_pred = model(x_batch)
+                 ^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\Videos\homework\CMPM17_Code\final\cmpm17finalproject\birdclassification.py", line 99, in forward
+    x = self.relu(self.conv1(x))
+                  ^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\conv.py", line 548, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+KeyboardInterrupt

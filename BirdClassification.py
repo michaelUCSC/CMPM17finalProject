@@ -9,6 +9,10 @@ import splitfolders
 from torchvision.datasets import ImageFolder
 from torchvision.transforms import v2
 import os
+import wandb
+
+run = wandb.init(project="Indian Bird Classification", name="Runs_2")
+
 root = "Data"
 
 #Transforms:
@@ -64,18 +68,18 @@ for root, _, files in os.walk(data_path):
 num_to_show = min(100, len(image_paths))
 random_images = random.sample(image_paths, k=num_to_show)
 
-print(random_images)
+# print(random_images)
 
-plt.figure(figsize=(20, 5))
-for idx, fp in enumerate(random_images, start=1):
-    img = Image.open(fp)
-    plt1 = plt.subplot(5,20, idx)
-    plt1.imshow(img)
-    plt1.set_title(os.path.basename(os.path.dirname(fp)))
-    plt1.axis('off')
+# plt.figure(figsize=(20, 5))
+# for idx, fp in enumerate(random_images, start=1):
+#     img = Image.open(fp)
+#     plt1 = plt.subplot(5,20, idx)
+#     plt1.imshow(img)
+#     plt1.set_title(os.path.basename(os.path.dirname(fp)))
+#     plt1.axis('off')
 
-plt.tight_layout()
-plt.show()
+# plt.tight_layout()
+# plt.show()
 
 # Convolution Layers
 
@@ -131,9 +135,9 @@ for epochs in range (1, NUM_EPOCHS+1):
         num_batches += 1
 
         train_pred = model(x_batch)
-        loss = loss_function(train_pred, y_batch)
+        train_loss = loss_function(train_pred, y_batch)
 
-        avgLossInEpoch += loss
+        avgLossInEpoch += train_loss
 
         #The commented lines below are what I tried doing to print accuracy—use that as you will
         #(accuracy attempt 1)
@@ -146,9 +150,11 @@ for epochs in range (1, NUM_EPOCHS+1):
         # correct_predictions = (predicted_classes == y_batch).sum().item()
         # total_samples += y_batch.size(0)
 
-        loss.backward()
+        train_loss.backward()
         optimizer.step()
         optimizer.zero_grad()
+        print(train_loss.item())
+        run.log({"Train Loss":train_loss})
     avgLossInEpoch /= num_batches
     #accuracy = correct_predictions / total_samples
 
@@ -160,11 +166,14 @@ for epochs in range (1, NUM_EPOCHS+1):
     print("------------Validation------------")
     for x_batch, y_batch in val_loader:
         val_pred = model(x_batch)
-        loss = loss_function(val_pred, y_batch)
-        avgValLoss += loss
-        print(loss.item())
+        val_loss = loss_function(val_pred, y_batch)
+        avgValLoss += val_loss
+        print(val_loss.item())
+        run.log({"Validation Loss":val_loss})
     avgValLoss /= num_batches
     print(f"Average validation loss in epoch {epochs}: {avgValLoss}")
+
+
 
 print("------------Testing------------")
 model.eval()
@@ -172,5 +181,10 @@ with torch.no_grad():
     for x_batch, y_batch in test_loader:
         test_pred = model(x_batch)
         loss = loss_function(test_pred, y_batch)
-        
+        avgTestLoss += loss
         print(loss.item())
+    
+    avgTestLoss /= num_batches
+    print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
+
+

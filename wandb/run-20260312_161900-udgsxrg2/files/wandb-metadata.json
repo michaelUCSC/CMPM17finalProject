@@ -1,0 +1,40 @@
+{
+  "os":  "Windows-11-10.0.26200-SP0",
+  "python":  "CPython 3.12.7",
+  "startedAt":  "2026-03-12T23:19:00.912305Z",
+  "program":  "C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\cmpm17finalproject\\birdclassification.py",
+  "codePath":  "birdclassification.py",
+  "codePathLocal":  "birdclassification.py",
+  "git":  {
+    "remote":  "https://github.com/michaelUCSC/CMPM17finalProject.git",
+    "commit":  "c2e1375e82226e0e4efa0acccc651935c61907fa"
+  },
+  "email":  "emlhu@ucsc.edu",
+  "root":  "C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\cmpm17finalproject",
+  "host":  "MSI",
+  "executable":  "C:\\Users\\emily\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "gpu":  "NVIDIA GeForce GTX 1650 Ti",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "488371122176",
+      "used":  "291317649408"
+    }
+  },
+  "memory":  {
+    "total":  "8401506304"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce GTX 1650 Ti",
+      "memoryTotal":  "4294967296",
+      "cudaCores":  1024,
+      "architecture":  "Turing",
+      "uuid":  "GPU-563987d2-47c4-2655-44de-b072b114ad68"
+    }
+  ],
+  "cudaVersion":  "11.7",
+  "writerId":  "flam7kqgs78trj8u6l7af2dd6qvdaeu3"
+}
