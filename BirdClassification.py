@@ -118,26 +118,53 @@ model.train()
 loss_function = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 
-NUM_EPOCHS = 50
+NUM_EPOCHS = 2
 
-
-for epochs in range (NUM_EPOCHS):
-    print("------------Training------------")
+for epochs in range (1, NUM_EPOCHS+1):
+#added +1 to num_epochs because the loop starts from 1 instead of 0
+    avgLossInEpoch = 0
+    num_batches = 0
+    correct_predictions = 0
+    total_samples = 0
+    print("------------Training------------\nPlease wait (should take a minute or two)...")
     for x_batch, y_batch in train_loader:
+        num_batches += 1
+
         train_pred = model(x_batch)
         loss = loss_function(train_pred, y_batch)
+
+        avgLossInEpoch += loss
+
+        #The commented lines below are what I tried doing to print accuracy—use that as you will
+        #(accuracy attempt 1)
+        # class_preds = train_pred > 0
+        # train_accuracy = (class_preds == y_batch).sum()
+        # accuracy = train_accuracy / len(train_data)
+
+        #(accuracy attempt 2)
+        # predicted_classes = train_pred.argmax(dim=1)
+        # correct_predictions = (predicted_classes == y_batch).sum().item()
+        # total_samples += y_batch.size(0)
+
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
-        
-        print(loss.item())
+    avgLossInEpoch /= num_batches
+    #accuracy = correct_predictions / total_samples
+
+    print(f"Epoch {epochs}")
+    print(f"Average Loss: {avgLossInEpoch:.4f}")
+    # print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
     
+    avgValLoss = 0
     print("------------Validation------------")
     for x_batch, y_batch in val_loader:
         val_pred = model(x_batch)
         loss = loss_function(val_pred, y_batch)
-
+        avgValLoss += loss
         print(loss.item())
+    avgValLoss /= num_batches
+    print(f"Average validation loss in epoch {epochs}: {avgValLoss}")
 
 print("------------Testing------------")
 model.eval()
