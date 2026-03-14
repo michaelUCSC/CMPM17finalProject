@@ -10,7 +10,7 @@ from torchvision.datasets import ImageFolder
 from torchvision.transforms import v2
 import os
 import wandb
-
+torch.manual_seed(10)
 run = wandb.init(project="Indian Bird Classification", name="Runs_2")
 
 root = "Data"
@@ -89,9 +89,9 @@ random_images = random.sample(image_paths, k=num_to_show)
 class ConvNet(nn.Module):
     def __init__(self):
         super().__init__()
-        self.conv1 = nn.Conv2d(3,6,3,1,1)
-        self.conv2 = nn.Conv2d(6,16,3,1,1)
-        self.conv3 = nn.Conv2d(16,48,3,1,1)
+        self.conv1 = nn.Conv2d(3,4,3,1,1)
+        self.conv2 = nn.Conv2d(4,3,3,1,1)
+        self.conv3 = nn.Conv2d(3,48,3,1,1)
         self.pool = nn.MaxPool2d(2,2)
         self.fc1 = nn.Linear(12*12*48,50)
         self.fc2 = nn.Linear(50,25)
@@ -122,8 +122,9 @@ model.train()
 
 loss_function = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
+# optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
-NUM_EPOCHS = 2
+NUM_EPOCHS = 50
 
 for epochs in range (1, NUM_EPOCHS+1):
 #added +1 to num_epochs because the loop starts from 1 instead of 0
@@ -193,5 +194,3 @@ with torch.no_grad():
     avgTestLoss /= num_batches
     print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
-
-
