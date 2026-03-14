@@ -1,0 +1,57 @@
+_wandb:
+    value:
+        cli_version: 0.25.0
+        e:
+            ao7xjpdjzs9cdx38ippxlc34vwk14p9e:
+                codePath: birdclassification.py
+                codePathLocal: birdclassification.py
+                cpu_count: 4
+                cpu_count_logical: 8
+                cudaVersion: "11.7"
+                disk:
+                    /:
+                        total: "488371122176"
+                        used: "290929041408"
+                email: emlhu@ucsc.edu
+                executable: C:\Users\emily\AppData\Local\Programs\Python\Python312\python.exe
+                git:
+                    commit: 70e8af9f4dd61ee5c676424a72022d74dc2087c5
+                    remote: https://github.com/michaelUCSC/CMPM17finalProject.git
+                gpu: NVIDIA GeForce GTX 1650 Ti
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Turing
+                      cudaCores: 1024
+                      memoryTotal: "4294967296"
+                      name: NVIDIA GeForce GTX 1650 Ti
+                      uuid: GPU-563987d2-47c4-2655-44de-b072b114ad68
+                host: MSI
+                memory:
+                    total: "8401506304"
+                os: Windows-11-10.0.26200-SP0
+                program: C:\Users\emily\Videos\homework\CMPM17_Code\final\cmpm17finalproject\birdclassification.py
+                python: CPython 3.12.7
+                root: C:\Users\emily\Videos\homework\CMPM17_Code\final\cmpm17finalproject
+                startedAt: "2026-03-13T20:14:15.789782Z"
+                writerId: ao7xjpdjzs9cdx38ippxlc34vwk14p9e
+        m: []
+        python_version: 3.12.7
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+            "3":
+                - 13
+            "4": 3.12.7
+            "5": 0.25.0
+            "8":
+                - 3
+            "12": 0.25.0
+            "13": windows-amd64

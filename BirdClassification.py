@@ -140,16 +140,10 @@ for epochs in range (1, NUM_EPOCHS+1):
 
         avgLossInEpoch += train_loss
 
-        #The commented lines below are what I tried doing to print accuracy—use that as you will
-        #(accuracy attempt 1)
-        # class_preds = train_pred > 0
-        # train_accuracy = (class_preds == y_batch).sum()
-        # accuracy = train_accuracy / len(train_data)
 
-        #(accuracy attempt 2)
-        # predicted_classes = train_pred.argmax(dim=1)
-        # correct_predictions = (predicted_classes == y_batch).sum().item()
-        # total_samples += y_batch.size(0)
+        predicted_classes = train_pred.argmax(dim=1)
+        correct_predictions += (predicted_classes == y_batch).sum().item()
+        total_samples += y_batch.size(0)
 
         train_loss.backward()
         optimizer.step()
@@ -157,22 +151,28 @@ for epochs in range (1, NUM_EPOCHS+1):
         print(train_loss.item())
         run.log({"Train Loss":train_loss})
     avgLossInEpoch /= num_batches
-    #accuracy = correct_predictions / total_samples
+    accuracy = correct_predictions / total_samples
 
     print(f"Epoch {epochs}")
     print(f"Average Loss: {avgLossInEpoch:.4f}")
-    # print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
+    print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
     
     avgValLoss = 0
     print("------------Validation------------")
     for x_batch, y_batch in val_loader:
         val_pred = model(x_batch)
         val_loss = loss_function(val_pred, y_batch)
+
+        predicted_classes = val_pred.argmax(dim=1)
+        correct_predictions += (predicted_classes == y_batch).sum().item()
+        total_samples += y_batch.size(0)
+
         avgValLoss += val_loss
         print(val_loss.item())
         run.log({"Validation Loss":val_loss})
     avgValLoss /= num_batches
     print(f"Average validation loss in epoch {epochs}: {avgValLoss}")
+    print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
 
 
@@ -182,10 +182,16 @@ with torch.no_grad():
     for x_batch, y_batch in test_loader:
         test_pred = model(x_batch)
         loss = loss_function(test_pred, y_batch)
+
+        predicted_classes = test_pred.argmax(dim=1)
+        correct_predictions += (predicted_classes == y_batch).sum().item()
+        total_samples += y_batch.size(0)
+
         avgTestLoss += loss
         print(loss.item())
     
     avgTestLoss /= num_batches
     print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
+    print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
 
