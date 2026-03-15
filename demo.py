@@ -2,10 +2,10 @@ import torch
 from PIL import Image
 from torchvision.transforms import v2
 
-from BirdClassification import InsertModelNameThatWeLoadedIn
+from BirdClassification import ConvNet
 
-model = MyModel()
-model.load_state_dict(torch.load("model.pt", weights_only=True))
+model = ConvNet()
+model.load_state_dict(torch.load("birdclassification_ver1", weights_only=True))
 
 transforms = v2.Compose([
     v2.ToTensor(),
