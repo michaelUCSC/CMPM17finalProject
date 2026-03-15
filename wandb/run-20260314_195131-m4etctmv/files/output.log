@@ -1,0 +1,55 @@
+C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_deprecated.py:42: UserWarning: The transform `ToTensor()` is deprecated and will be removed in a future release. Instead, please use `v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale=True)])`.Output is equivalent up to float precision.
+  warnings.warn(
+['C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\Forest Wagtail\\ML362555911.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Hoopoe\\ML435323951.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\White-Breasted Waterhen\\ML87230171.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\House Crow\\ML455200721.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Jungle Babbler\\ML61649221.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Asian Green Bee-Eater\\ML317910801.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Cattle Egret\\ML276873651.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Northern Lapwing\\ML404942021.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\Northern Lapwing\\ML134155081.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Northern Lapwing\\ML204284991.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Red-Wattled Lapwing\\ML195988561.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\test\\Gray Wagtail\\ML336398771.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\Cattle Egret\\ML441530021.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\Forest Wagtail\\ML285704321.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Peacock\\ML117645651.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Pitta\\ML240730331.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\White-Breasted Kingfisher\\ML84180621.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Roller\\ML24967851.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Common Tailorbird\\ML211657651.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\White-Breasted Kingfisher\\ML527738751.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Asian Green Bee-Eater\\ML412469401.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Common Rosefinch\\ML85885631.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Roller\\ML252764711.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Jungle Babbler\\ML78552021.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\test\\House Crow\\ML109438531.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\Northern Lapwing\\ML168135931.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Northern Lapwing\\ML200366671.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Forest Wagtail\\ML119952681.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\White Wagtail\\ML95308221.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Roller\\ML23263011.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\White-Breasted Kingfisher\\ML205564651.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Cattle Egret\\ML389018191.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Cattle Egret\\ML191313911.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Pitta\\ML136405231.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\test\\Northern Lapwing\\ML338427311.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Indian Roller\\ML72138711.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\Brown-Headed Barbet\\ML26318101.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\val\\House Crow\\ML124998071.jpg', 'C:\\Users\\emily\\Videos\\homework\\CMPM17_Code\\final\\Data\\train\\White Wagtail\\ML510964221.jpg', 'C:\\Users\\emily\\Vide
+------------Training------------
+Please wait (should take a minute or two)...
+3.305065870285034
+1.5384013652801514
+2.1092817783355713
+Traceback (most recent call last):
+  File "C:\Users\emily\Videos\homework\CMPM17_Code\final\cmpm17finalProject\birdclassification.py", line 136, in <module>
+    for x_batch, y_batch in train_loader:
+                            ^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\utils\data\dataloader.py", line 741, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\utils\data\dataloader.py", line 801, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\datasets\folder.py", line 247, in __getitem__
+    sample = self.transform(sample)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_container.py", line 52, in forward
+    outputs = transform(*inputs)
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_transform.py", line 69, in forward
+    self.transform(inpt, params) if needs_transform else inpt
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_geometry.py", line 161, in transform
+    return self._call_kernel(
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\_transform.py", line 49, in _call_kernel
+    return kernel(inpt, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torchvision\transforms\v2\functional\_geometry.py", line 324, in resize_image
+    image = interpolate(
+            ^^^^^^^^^^^^
+  File "C:\Users\emily\AppData\Local\Programs\Python\Python312\Lib\site-packages\torch\nn\functional.py", line 4850, in interpolate
+    return torch._C._nn._upsample_bilinear2d_aa(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -194,3 +194,7 @@ with torch.no_grad():
     avgTestLoss /= num_batches
     print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
+
+    print("finished training, saving model")
+
+    torch.save(model.state_dict(), "birdclassification_ver1.pt")
