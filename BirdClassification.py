@@ -124,7 +124,7 @@ loss_function = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
 # optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
-NUM_EPOCHS = 50
+NUM_EPOCHS = 5
 
 for epochs in range (1, NUM_EPOCHS+1):
 #added +1 to num_epochs because the loop starts from 1 instead of 0
@@ -195,6 +195,6 @@ with torch.no_grad():
     print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
-    print("finished training, saving model")
+print("finished training, saving model")
 
-    torch.save(model.state_dict(), "birdclassification_ver1.pt")
+torch.save(model.state_dict(), "birdclassification_ver1.pt")
