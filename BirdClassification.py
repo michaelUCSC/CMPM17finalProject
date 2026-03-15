@@ -176,7 +176,7 @@ for epochs in range (1, NUM_EPOCHS+1):
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
 
-
+avgTestLoss = 0
 print("------------Testing------------")
 model.eval()
 with torch.no_grad():
