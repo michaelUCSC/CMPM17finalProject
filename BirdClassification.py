@@ -176,7 +176,12 @@ for epochs in range (1, NUM_EPOCHS+1):
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
 
+total_samples = 0
+avgLossInEpoch = 0
+num_batches = 0
+correct_predictions = 0
 avgTestLoss = 0
+
 print("------------Testing------------")
 model.eval()
 with torch.no_grad():
@@ -195,6 +200,6 @@ with torch.no_grad():
     print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
-print("finished training, saving model")
+# print("finished training, saving model")
 
-torch.save(model.state_dict(), "birdclassification_ver1.pt")
+# torch.save(model.state_dict(), "birdclassification_ver1.pt")
