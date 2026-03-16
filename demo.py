@@ -5,7 +5,7 @@ from torchvision.transforms import v2
 from BirdClassification import ConvNet
 
 model = ConvNet()
-model.load_state_dict(torch.load("birdclassification_ver1", weights_only=True))
+model.load_state_dict(torch.load("birdclassification_ver1.pt", weights_only=True))
 
 transforms = v2.Compose([
     v2.ToTensor(),
