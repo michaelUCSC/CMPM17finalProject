@@ -69,18 +69,18 @@ for root, _, files in os.walk(data_path):
 num_to_show = min(100, len(image_paths))
 random_images = random.sample(image_paths, k=num_to_show)
 
-# print(random_images)
+print(random_images)
 
-# plt.figure(figsize=(20, 5))
-# for idx, fp in enumerate(random_images, start=1):
-#     img = Image.open(fp)
-#     plt1 = plt.subplot(5,20, idx)
-#     plt1.imshow(img)
-#     plt1.set_title(os.path.basename(os.path.dirname(fp)))
-#     plt1.axis('off')
+plt.figure(figsize=(20, 5))
+for idx, fp in enumerate(random_images, start=1):
+    img = Image.open(fp)
+    plt1 = plt.subplot(5,20, idx)
+    plt1.imshow(img)
+    plt1.set_title(os.path.basename(os.path.dirname(fp)))
+    plt1.axis('off')
 
-# plt.tight_layout()
-# plt.show()
+plt.tight_layout()
+plt.show()
 
 # Convolution Layers
 
@@ -200,6 +200,6 @@ with torch.no_grad():
     print(f"Average testing loss in epoch {epochs}: {avgTestLoss}")
     print(f"Accuracy: {accuracy:.4f} ({accuracy*100:.2f}%)")
 
-# print("finished training, saving model")
+print("finished training, saving model")
 
-# torch.save(model.state_dict(), "birdclassification_ver1.pt")
+torch.save(model.state_dict(), "birdclassification_ver1.pt")
